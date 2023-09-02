@@ -1,0 +1,1131 @@
+/**Setting up for ROOT STYLING**/
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root{
+  
+  --body-color: rgb(247, 247, 255);
+  --sidebar-color: #ffffff;
+  --primary-color: #023047;
+  --primary-light-color: #00b4d8;
+  --primary-light-color2: aliceblue;
+  --primary-light-color3: rgb(215, 236, 254);
+  --toggle-color: #3e3e3e;
+  --text-color: #242424;
+  --error-color: red;
+  --linebrake-color : #ddd;
+
+  /**TRANSITIONS**/
+  --slow: 0.6s all ease-in-out;
+  --normal: 0.4s all ease-in-out;
+  --fast: 0.2s all ease-in-out;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background-color: var(--body-color);
+}
+
+
+/*This is for navbar ya home page*/
+nav {
+  background-color: var(--body-color);
+}
+.navbar{
+  font-weight: bold;
+  font-size: large;
+  padding-left: 6%;
+  padding-right: 6%;
+}
+.logo{
+  height: 25px;
+  width: 27px;
+  margin-top: -5px;
+}
+.dropdown-menu {
+  background-color: var(--sidebar-color);
+}
+.dropdown-menu :hover {
+  background-color: var(--sidebar-color);
+  font-weight: bold;
+  font-size: large;
+}
+.mainMenuLink {
+  display: inline-block;
+  vertical-align: middle; 
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  overflow: hidden;
+}
+.mainMenuLink:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background: var(--primary-light-color);
+  height: 1.5px;
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.mainMenuLink:hover:before,
+.mainMenuLink:focus:before,
+.mainMenuLink:active:before {
+  left: 0;
+  right: 0;
+}
+
+
+
+ /**NAV FOR THE LOGIN PAGES**/
+.sidebar{
+  min-height: 100vh;
+  width: 78px;
+  padding: 6px 14px;
+  z-index: 99;
+  background-color: var(--sidebar-color);
+  transition: all .5s ease;
+  position: fixed;
+  top:0;
+  left: 0;
+}
+
+.sidebar.open{
+  width: 250px;
+}
+
+.sidebar .logo_details{
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sidebar .logo_details .icon{
+  opacity: 0;
+  transition: all 0.5s ease ;
+}
+
+
+
+.sidebar .logo_details .logo_name{
+  color:var(--text-color);
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all .5s ease;
+}
+
+.sidebar.open .logo_details .icon,
+.sidebar.open .logo_details .logo_name{
+  opacity: 1;
+}
+
+.sidebar .logo_details #btn{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.sidebar.open .logo_details #btn{
+  text-align: right;
+}
+
+.sidebar i{
+  color:var(--primary-light-color);
+  height: 60px;
+  line-height: 60px;
+  min-width: 50px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.sidebar .nav-list{
+  margin-top: 20px;
+  height: 100%;
+}
+
+.sidebar li{
+  position: relative;
+  margin:20px 0;
+  list-style: none;
+}
+
+.sidebar li .tooltip{
+  position: absolute;
+  top:-20px;
+  left:calc(100% + 15px);
+  z-index: 3;
+  background-color: var(--sidebar-color);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar li:hover .tooltip{
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  top:50%;
+  transform: translateY(-50%);
+}
+
+.sidebar.open li .tooltip{
+  display: none;
+}
+
+.sidebar input{
+  font-size: 15px;
+  color: var(--color-white);
+  font-weight: 400;
+  outline: none;
+  height: 35px;
+  width: 35px;
+  border:none;
+  border-radius: 5px;
+  background-color: var(--primary-light-color2);
+  transition: all .5s ease;
+}
+
+.sidebar input::placeholder{
+  color:var(--text-color)
+}
+
+.sidebar.open input{
+  width: 100%;
+  padding: 0 20px 0 50px;
+}
+
+.sidebar .bx-search{
+  position: absolute;
+  top:50%;
+  left:0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background-color: var(--primary-light-color2);
+  color: var(--primary-light-color);
+}
+
+.sidebar li a{
+  
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  text-decoration: none;
+  background-color: var(--sidebar-color);
+  position: relative;
+  transition: all .5s ease;
+  z-index: 12;
+}
+
+.sidebar li a::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  background-color: var(--primary-light-color2);
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+  transform-origin: left;
+  z-index: -2;
+}
+
+.sidebar li a:hover::after{
+  transform: scaleX(1);
+  color:var(--sidebar-color)
+}
+
+.sidebar li a .link_name{
+  color:var(--text-color);
+  font-size: 25px;
+  font-weight: 400;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sidebar li a:hover .link_name,
+.sidebar li a:hover i{
+  transition: all 0.5s ease;
+  color:var(--primary-light-color)
+}
+
+.sidebar.open li a .link_name{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar li i{
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.sidebar li.profile{
+  position: fixed;
+  height: 60px;
+  width: 78px;
+  left: 0;
+  bottom:-8px;
+  padding:10px 14px;
+  overflow: hidden;
+  transition: all .5s ease;
+}
+
+.sidebar.open li.profile{
+  width: 250px;
+}
+
+.sidebar .profile .profile_details{
+  display: flex;
+  align-items: center;
+  flex-wrap:  nowrap;
+}
+
+.sidebar li img{
+  height: 45px;
+  width: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.sidebar li.profile .name,
+.sidebar li.profile .designation{
+  font-size: 20px;
+  font-weight: bold;
+  color:var(--text-color);
+  white-space: nowrap;
+}
+
+.sidebar li.profile .designation{
+  font-size: 12px;
+}
+
+.sidebar .profile #log_out{
+  position: absolute;
+  top:50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: var(--sidebar-color);
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.sidebar.open .profile #log_out{
+  width: 50px;
+  background: none;
+}
+
+
+
+.home-section{
+  position: relative;
+  background-color: var(--body-color);
+  min-height: 100vh;
+  top:0;
+  left:78px;
+  width: calc(100% - 93px);
+  transition: all .5s ease;
+  z-index: 2;
+}
+
+.home-section .text{
+  display: inline-block;
+  color:var(--text-color);
+  font-size: 25px;
+  font-weight: 500;
+  margin: 18px;
+}
+
+.sidebar.open ~ .home-section{
+  left:250px;
+  width: calc(100% - 250px);
+}
+.wrapper{
+  margin-left: 20%;
+}
+/**THIS IS A PROFILE PAGE CSS**/
+
+
+.card {
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+}
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--sidebar-color);
+  background-clip: border-box;
+  border: 1px solid --;
+  border-radius: .2rem;
+}
+ .card-header:first-child {
+  border-radius: calc(.2rem - 1px) calc(.2rem - 1px) 0 0;
+}
+.card-header {
+  border-bottom-width: 1px;
+}
+.card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  color: inherit;
+  background-color: var(--sidebar-color);
+  border-bottom: 1px solid var(--primary-light-color2);
+}
+
+.select{
+    margin: 10px 0;
+    font-size: 18px;
+}
+  
+.select label {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: bold;
+}
+  
+.select select {
+    font-size: 18px;
+    padding: 5px;
+    border: 2px solid var(--primary-light-color);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+  
+.select select:focus{
+    border-color:  var(--primary-light-color);
+}
+button, .btn{
+  background-color: var(--primary-light-color) !important;
+} 
+
+
+
+
+.inpBTNPROFILE{
+  display:none;
+}
+.error #errorM{
+  color: var(--error-color);
+  font-size: 15px !important;
+  font-weight: bold;
+  text-transform: uppercase !important;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+/**-------------------------------DASHBORD STYLING-------------------------------**/
+
+/* ROW01 */
+.row01,.row02{
+  width: 100%;  
+}
+
+.row01 div, .row02 div{
+  border-radius: 10px;  
+}
+.helloName{
+  font-size: 30px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.helloDate{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 20px;
+}
+.time{
+  padding-left:10%;
+  font-size: 50px;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* ROW02 */
+
+.row02 .bx-alarm{
+  color: var(--text-color);
+}
+
+.col-3.row2Box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+
+.col-3.row2Box h1 {
+  color: var(--text-color);
+  font-size: 48px;
+  font-weight: bold;
+}
+
+#clock {
+  font-family: 'Kanit', sans-serif;
+  font-size: 50px;
+  color: var(--text-color);
+  margin-right: 40px;
+}
+
+/* ROW03 */
+.row02 h3{
+  font-family:sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* MUSIC */
+
+.now-playing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.song-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.song-artist {
+  font-size: 0.9em;
+}
+
+.song-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.song-bar {
+  width: 60%;
+  height: 5px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.movingBar{
+  height: 5px;
+  width: 0%;
+  background-color: var(--primary-light-color);
+}
+
+.song-time {
+  font-size: 0.8em;
+  margin-left: 5px;
+}
+
+.song-controls {
+  display: flex;
+  align-items: center;
+}
+
+.song-controls button {
+  border: none;
+  background-color: transparent;
+  margin: 0 5px;
+  font-size: 1.2em;
+}
+
+.song-controls button i {
+  color: var(--text-color);
+}
+
+.play-btn i.fa-play:before {
+  content: "\f04b";
+}
+
+.play-btn.playing i.fa-play:before {
+  content: "\f04c";
+}
+.song-controls button{
+  background-color: transparent !important;
+}
+
+/* WEATHER */
+.weathers-home-work{
+  height: 280px;
+  overflow-y: scroll;
+}
+.weathers-home-work::-webkit-scrollbar{
+  width: 0px;
+}
+.weather-icon p img{
+  background-color: var(--primary-light-color2);
+  border-radius: 15%;
+  height: 50px;
+  width: 50px;
+}
+
+
+.location, .weather-info, .description {
+  display: flex;
+  justify-content: left;
+  margin-left: 10px;
+}
+
+
+.location i {
+  font-size: 30px;
+  position: relative;
+  top: 5px;
+  right: -50px;
+}
+
+.weather-info i{
+  font-size: 45px;
+  padding-right: 20px;
+ 
+}
+.temperature h3{
+  margin-left: 30%;
+  font-size: 45px ;
+}
+hr {
+  border: none;
+  border-top: 2px solid var(--primary-light-color3);
+  height: 1px;
+  margin: 1em 0;
+}
+
+
+.neumorphic{
+  padding: 10px;
+  background-color: var(--sidebar-color);
+  border-radius: 10px;
+  box-shadow: -0.5px -0.5px 5px var(--primary-light-color3), 0.5px 0.5px 5px var(--primary-light-color3);
+}
+.neumorphic h1 i{
+  background-color: var(--primary-light-color3);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* ALARMS LIST */
+.alarm-list {
+  height: 280px;
+  overflow-y: scroll;
+  padding: 10px;
+}
+.alarm-list::-webkit-scrollbar{
+  width: 0px;
+}
+
+.alarm-list h2 {
+  font-size: 24px;
+  margin: 0 0 10px;
+}
+
+.alarm-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.alarm-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  padding: 10px 0;
+}
+
+.alarm-info {
+  display: flex;
+  align-items: center;
+}
+
+.alarm-info .alarmTime {
+  font-size: 30px;
+  margin-right: 20px;
+}
+.alarm-info .alarmName{
+  margin-right: 30px;
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.toggle input[type="checkbox"] {
+  display: none;
+}
+
+.toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #ccc;
+}
+
+.toggle-input:checked + .toggle-label {
+  background-color: #48f321;
+}
+
+.days {
+  font-size: 18px;
+}
+
+
+/* TASKS */
+
+
+
+.task-list {
+  height: 400px;
+  overflow-y: scroll;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.task-list::-webkit-scrollbar{
+  width: 0px;
+}
+
+.task-list li {
+  font-size: 18px;
+  line-height: 1.5;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-list li:last-child {
+  border-bottom: none;
+}
+
+/**-------------------------------ALARM PAGE STYLING-------------------------------**/
+
+/* ROW 1 ALARM HEADING AND ADD BUTTON HEADING AND MODAL FOR ADDING ALARM*/
+.bx-alarm-add{
+	font-size: 40px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.3); /* Black w/ opacity */
+}
+.autoModall{
+  background-color: #e7e7e7 !important;
+}
+  
+  /* Modal Content/Box */
+.modal-content {
+  background-color: var(--sidebar-color);
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+  
+  /* The Close Button */
+.close,.close2  {
+  color: var(--sidebar-color);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+  
+.close:hover,.close2:hover {
+  color: var(--text-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* ROW 2 ALARM names, time, interval, status, delete, and edit*/
+.alarm{
+	/* border: 1px solid green; */
+	padding: 10px;
+	margin: 10px;
+	margin-left: 50px;
+	border-radius: 20px;
+	background-color: var(--sidebar-color);
+  box-shadow: -0.5px -0.5px 5px var(--primary-light-color3), 0.5px 0.5px 5px var(--primary-light-color3);
+}
+
+/* Alarm and its attributes */
+.alrmTittle{
+	font-weight: bold;
+}
+.alrmTime{
+	font-size: 40px;
+	font-weight: bold;
+}
+.alrmStatus{
+	align-items: center;
+
+}
+.sqlControls{
+	font-size: 50px;
+}
+.sqlControls i{
+	padding: 10px;
+	background-color: var(--primary-light-color3);
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+/* Toggle btn */
+
+.switch {
+	border-radius: 50%;
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	height: 34px;
+  }
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+  
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 40px;
+}
+  
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: var(--sidebar-color);
+	-webkit-transition: .4s;
+	transition: .4s;
+	border-radius: 50%
+}
+  
+input:checked + .slider {
+	background-color: var(--primary-light-color);
+}
+  
+input:focus + .slider {
+	box-shadow: 0 0 1px var(--primary-light-color);
+}
+  
+input:checked + .slider:before {
+	-webkit-transform: translateX(46px);
+	-ms-transform: translateX(46px);
+	transform: translateX(46px);
+}
+  
+/**-------------------------------MUSIC PAGE STYLING-------------------------------**/
+
+
+.music{
+  border-radius: 10px;
+  background-color: var(--primary-light-color2);
+  border: 1px solid var(--primary-light-color3) !important;
+}
+.songPic{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 0;
+  height: auto;
+}
+.songPic img{
+  width: 100%;
+  height: 100%;
+  
+  padding: 0;
+  margin: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.songControl{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.songDetails{
+padding-left: 2%;
+}
+.pause,.play{
+  font-size: 50px;
+  background-color: transparent !important;
+  border: none;
+
+}
+.pause:focus, .play:focus{
+outline: none;
+border: none;
+}
+
+.pause {
+  display: none;    
+  font-size: 50px;
+}
+
+
+/**-------------------------------REMINDER PAGE STYLING-------------------------------**/
+
+.remCard{
+  padding: 10px;
+  /* background-color: var(--primary-light-color3); */
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.remCname h5{
+  font-weight: bold;
+}
+.remCDate p{
+  color: #6b6b6b;
+}
+
+.autoAct-list{
+  background-color: white;
+  border-radius: 5px;
+  height: 50px;
+  overflow-y: scroll;
+}
+.autoAct-list .song {
+  text-decoration: none;
+  color: var(--text-color);
+}
+.autoAct-list .song:hover {
+  text-decoration: none;
+  color: var(--toggle-color);
+}
+.autoAct-list::-webkit-scrollbar{
+  width: 0px;
+}
+
+#musicListContainer, #pagesContainer{
+  display: none;
+}
+
+.addCard{
+  padding: 10px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.addCards{
+  padding-top: 25px;
+  background-color: #f7f7ff !important; 
+  border: none; 
+  border-radius: 10px;
+}
+.addCardBtn p{
+  font-size: 100px;
+}
+.addCardBtn a img{
+  background-color: var(--primary-light-color3);
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--primary-light-color2);
+
+}
+.delCard{
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 20px;
+  color: var(--primary-color);
+  transition: 0.2s ease 0s;
+  text-decoration:none;
+  padding: 2px;
+}
+.delCard:hover{
+  text-decoration:none;
+  color: var(--error-color);
+}
+
+
+/**-------------------------------MOTIVATION PAGE STYLING-------------------------------**/
+
+.music-box{
+  margin-top: 60px;
+}
+
+
+.main-video{
+  padding: 10px;
+  border-radius: 8px;
+  background-color: var(--sidebar-color);
+}
+.main-video video{
+  width: 100%;
+  border-radius: 8px;
+} 
+.video-list{
+  background-color: var(--sidebar-color);
+  border-radius: 8px;
+  padding-top: 10px;
+  height: 500px;
+  overflow-y: scroll;
+}
+.video-list video{
+  width: 40%;
+  border-radius: 3px;
+}
+.video-list .vide{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary-light-color2);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+.video-list .active{
+  background-color: var(--primary-light-color);
+  color: var(--sidebar-color);
+}
+.video-list .active:hover{
+  color: var(--text-color);
+}
+.video-list .vide:hover{
+  background-color: var(--primary-light-color3);
+  cursor: pointer;
+}
+.vide{
+  position: relative;
+}
+.delVideo{
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 20px;
+  color: var(--primary-color);
+  transition: 0.2s ease 0s;
+  text-decoration:none;
+  padding: 2px;
+}
+.delVideo:hover{
+  text-decoration:none;
+  color: var(--error-color);
+}
+.error h4{
+  color: var(--error-color);
+}
+
+/**-------------------------------DATA ANALISTS PAGE STYLING-------------------------------**/
+/*********************************         1st ROW          *********************************/
+.motiHeader{
+  margin-bottom: 40px;
+}
+.weathers-home-work{
+  height: 280px;
+  overflow-y: scroll;
+}
+.weathers-home-work::-webkit-scrollbar{
+  width: 0px;
+}
+.weather-icon p img{
+  background-color: var(--primary-light-color2);
+  border-radius: 15%;
+  height: 50px;
+  width: 50px;
+}
+
+#alarmTable {
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+  border-collapse: collapse;
+}
+#alarmTable th, #alarmTable td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #9b9999;
+}
+#alarmTable th {
+  background-color: #f2f2f2;
+}
+#alarmTable tr:hover {
+  background-color: #f5f5f5;
+} 
+
+
+.diagram1{
+  background-color: var(--sidebar-color);
+  border-radius: 10px;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.ownReport{
+  background-color: var(--sidebar-color);
+  border-radius: 10px;
+  padding: 10px;
+}
